@@ -1,8 +1,8 @@
-package com.totalplay.mx.universaltoken.service;
+package com.totalplay.mx.universaltoken.dao;
 
 import java.io.IOException;
 
-import org.apache.http.HttpHeaders;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import com.totalplay.mx.universaltoken.controller.TokenRequest;
+
 
 
 @Service
@@ -24,7 +26,7 @@ public class SendTokenService {
     
     
     
-    public void sendToken() throws ClientProtocolException, IOException {
+    public void sendToken (TokenRequest tokenRequest) throws ClientProtocolException, IOException {
     
       HttpClient client_object = HttpClientBuilder.create().build();
 
@@ -37,16 +39,16 @@ public class SendTokenService {
      
     	 JSONObject json_body_content = new JSONObject();
          json_body_content.put("path", "get-token");
-         json_body_content.put("function", "sms");
+         json_body_content.put("function", tokenRequest.getFunction());
          
         
          JSONObject json_object_body = new JSONObject();
          json_object_body.put("body", json_body_content );
          json_object_body.put("jwtMiddleware", "eyJ0eXAiOiJKV1QiLCJhbGc.iOiJIUzI1NiJ9eyJzdWIiOiIxM");
-         json_object_body.put("numeroTelefonico", "5631159899");
+         json_object_body.put("numeroTelefonico", tokenRequest.getEmail() );
          json_object_body.put("obtenerCodigoSMS", "true");
          json_object_body.put("lada", "+52");
-         json_object_body.put("canal", "Middleware");
+         json_object_body.put("canal", tokenRequest.getCanal());
          
          
          StringEntity entity_object = new StringEntity(json_object_body.toString());
