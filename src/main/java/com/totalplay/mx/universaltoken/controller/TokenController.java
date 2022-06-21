@@ -18,18 +18,16 @@ public class TokenController {
 	SendTokenService serviceToken;
 	
 	
-	@GetMapping("/prueba")
-	public TokenRequest prueba() {
-		
-		
-		return new TokenRequest("sms", 23456789, "Middleware");
-	}
 	
 	
 	@PostMapping("/middleware/generar")
-	public void viewJson (@RequestBody TokenRequest tokenRequest ) throws ClientProtocolException, IOException {
+	public TokenResponse viewJson (@RequestBody TokenRequest tokenRequest ) throws ClientProtocolException, IOException {
 		
-		serviceToken.sendToken(tokenRequest);
+		
+	String secdata_value = serviceToken.sendToken(tokenRequest);
+			
+			return new TokenResponse("0","" + (int)(Math.random()*99999999+1),"Petición realizada con éxito.",secdata_value);
+			
 		
 	}
 

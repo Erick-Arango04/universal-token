@@ -1,14 +1,16 @@
 package com.totalplay.mx.universaltoken.dao;
 
 import java.io.IOException;
-
+import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -26,8 +28,8 @@ public class SendTokenService {
     
     
     
-    public void sendToken (TokenRequest tokenRequest) throws ClientProtocolException, IOException {
-    
+    public String sendToken (TokenRequest tokenRequest) throws ParseException, IOException  {
+    	  
       HttpClient client_object = HttpClientBuilder.create().build();
 
       HttpPost request_object = new HttpPost(environment_object.getProperty("end-point-token"));
@@ -55,14 +57,19 @@ public class SendTokenService {
          request_object.setEntity(entity_object);
 
          HttpResponse response_object = client_object.execute(request_object);
-       
-         System.out.print(response_object.getStatusLine().getStatusCode());
-    	
+          
+             //Obtencion del Response Json
+             
+             String body_string = EntityUtils.toString(response_object.getEntity());
+             
+             JSONObject body_request_json = new JSONObject(body_string);
+          
+             String secdata = body_request_json.get("bean").toString();
+             JSONObject secdata_json = new JSONObject(secdata);
+             
+            return secdata_json.get("secdata").toString();
+             
+        
     }
 	  
-	
-	
-	
-	
-	
 }
