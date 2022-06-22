@@ -1,7 +1,7 @@
 package com.totalplay.mx.universaltoken.controller;
 
 
-public class TokenResponse {
+public class TokenResponse1 {
 	
 	
 	private String result;
@@ -11,7 +11,7 @@ public class TokenResponse {
 	
 	
 	
-	public TokenResponse(String result, String resultIdentifier, String resultDescription, String code ) {
+	public TokenResponse1(String result, String resultIdentifier, String resultDescription, String code ) {
 		this.result = result;
 		this.resultIdentifier = resultIdentifier;
 		this.resultDescription = resultDescription;

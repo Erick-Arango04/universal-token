@@ -1,7 +1,9 @@
 package com.totalplay.mx.universaltoken.exception;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,16 @@ public class CustomizedResponseHandler extends ResponseEntityExceptionHandler {
 		*/	  
 			  return new ResponseEntity(exceptionResponse,HttpStatus.INTERNAL_SERVER_ERROR);
 		
+	}
+	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+		
+		ExceptionResponse  exceptionResponse = new ExceptionResponse("1","" + (int)(Math.random()*99999999+1),ex.getBindingResult().toString());
+
+	//	handleExceptionInternal(ex, null, headers, status, request);
+		
+		return new ResponseEntity(exceptionResponse,HttpStatus.BAD_REQUEST);
 	}
 
 }

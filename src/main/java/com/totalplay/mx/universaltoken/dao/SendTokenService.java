@@ -49,7 +49,7 @@ public class SendTokenService {
          json_object_body.put("jwtMiddleware", "eyJ0eXAiOiJKV1QiLCJhbGc.iOiJIUzI1NiJ9eyJzdWIiOiIxM");
          json_object_body.put("numeroTelefonico", tokenRequest.getEmail() );
          json_object_body.put("obtenerCodigoSMS", "true");
-         json_object_body.put("lada", "+52");
+         json_object_body.put("lada", tokenRequest.getLada());
          json_object_body.put("canal", tokenRequest.getCanal());
          
          
