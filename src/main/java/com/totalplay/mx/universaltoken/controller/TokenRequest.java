@@ -2,6 +2,7 @@ package com.totalplay.mx.universaltoken.controller;
 
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class TokenRequest {
@@ -16,7 +17,7 @@ public class TokenRequest {
 	private String email;
 	
 	// en caso de que se mande la lada debe de tener esta validacion
-	@Size(min = 3, max = 3, message = "lada invalida")
+	@Pattern(regexp="^[+][0-9]{2}$",message="Lada incorrecta")
 	private String lada;
 	
 	@NotBlank
