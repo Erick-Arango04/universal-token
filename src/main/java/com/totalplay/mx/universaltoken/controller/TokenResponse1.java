@@ -7,16 +7,13 @@ public class TokenResponse1 {
 	private String result;
 	private String resultIdentifier;
 	private String resultDescription;
-	private String code;
 	
 	
 	
-	public TokenResponse1(String result, String resultIdentifier, String resultDescription, String code ) {
+	public TokenResponse1(String result, String resultIdentifier, String resultDescription) {
 		this.result = result;
 		this.resultIdentifier = resultIdentifier;
 		this.resultDescription = resultDescription;
-		this.code = code;
-		
 	}
 	
 	
@@ -24,14 +21,6 @@ public class TokenResponse1 {
 		return result;
 	}
 	
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public void setResult(String result) {
 		this.result = result;
 	}

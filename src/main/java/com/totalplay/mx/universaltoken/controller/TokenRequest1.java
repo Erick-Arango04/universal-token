@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class TokenRequest {
+public class TokenRequest1 {
 	
 	
 	
@@ -26,7 +26,7 @@ public class TokenRequest {
 	
 	
 	
-	public TokenRequest(String function, String email, String canal, String lada) {
+	public TokenRequest1(String function, String email, String canal, String lada) {
 		this.function = function;
 		this.lada = lada;
 		this.email = email;

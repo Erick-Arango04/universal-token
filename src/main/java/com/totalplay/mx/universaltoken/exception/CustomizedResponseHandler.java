@@ -30,7 +30,7 @@ public class CustomizedResponseHandler extends ResponseEntityExceptionHandler {
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		
-		ExceptionResponse  exceptionResponse = new ExceptionResponse("1","" + (int)(Math.random()*99999999+1),ex.getBindingResult().toString());
+		ExceptionResponseFinal  exceptionResponse = new ExceptionResponseFinal("1","" + (int)(Math.random()*99999999+1), "información Incorrecta");
 
 	//	handleExceptionInternal(ex, null, headers, status, request);
 		

@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import com.totalplay.mx.universaltoken.controller.TokenRequest;
+
+import com.totalplay.mx.universaltoken.controller.TokenRequest1;
+
 
 
 
@@ -28,7 +30,7 @@ public class SendTokenService {
     
     
     
-    public String sendToken (TokenRequest tokenRequest) throws ParseException, IOException  {
+    public String sendToken (TokenRequest1 tokenRequest) throws ParseException, IOException  {
     	  
       HttpClient client_object = HttpClientBuilder.create().build();
 
