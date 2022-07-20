@@ -18,7 +18,7 @@ public class CustomizedResponseHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) throws Exception {
 		
-		ExceptionResponse  exceptionResponse = new ExceptionResponse("1","" + (int)(Math.random()*99999999+1),"No fue posible generar token");
+		ExceptionResponseFinal  exceptionResponse = new ExceptionResponseFinal("1","" + (int)(Math.random()*99999999+1),"No fue posible generar token");
 		/*
 		System.out.print(ex.getMessage());
 		System.out.print(request.getDescription(false));
